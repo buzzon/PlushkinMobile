@@ -18,7 +18,7 @@ namespace PlushkinForms
 
         async protected override void OnStart()
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            await Shell.Current.GoToAsync("//RegisterPage");
         }
 
         protected override void OnSleep()
