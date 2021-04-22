@@ -15,7 +15,7 @@ namespace PlushkinForms.Views
         public RegisterPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            this.BindingContext = new RegisterViewModel();
         }
     }
 }

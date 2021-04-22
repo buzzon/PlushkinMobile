@@ -7,6 +7,9 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="RochesterFont">
+                <On Platform="Android" Value="Rochester-Regular.ttf#Open Rochester" />
+            </OnPlatform>
             <Color x:Key="Primary">#2196F3</Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
@@ -26,6 +29,9 @@
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="16"/>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>

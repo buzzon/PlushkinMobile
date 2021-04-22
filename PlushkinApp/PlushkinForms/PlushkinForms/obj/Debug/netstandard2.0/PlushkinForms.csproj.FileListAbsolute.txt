@@ -21,3 +21,4 @@ D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstanda
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\ProfilePage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\SearchPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\RegisterPage.xaml.g.cs
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\AuthorizationPage.xaml.g.cs

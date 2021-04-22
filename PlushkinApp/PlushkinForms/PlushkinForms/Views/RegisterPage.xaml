@@ -3,8 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlushkinForms.Views.RegisterPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Button VerticalOptions="Center" Text="Создать аккаунт" Command="{Binding LoginCommand}"/>
+        <StackLayout  Padding="10,0,10,0" VerticalOptions="Center">
+            <StackLayout HorizontalOptions="Center" >
+                <Label Text="Plushkin" FontSize="80" FontFamily="{StaticResource RochesterFont}"/>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout HorizontalOptions="Center" >
+                    <Label Text="В первый раз?"  />
+                </StackLayout>
+                <StackLayout>
+                    <Entry Placeholder="Как вас зовут?" />
+                    <Entry Placeholder="Почта" />
+                    <Entry Placeholder="Пароль" />
+                    <Button VerticalOptions="Center" Text="Создать аккаунт" Command="{Binding RegisterCommand}"/>
+                    <Button VerticalOptions="Center" Text="Continue with Google" Command="{Binding RegisterGoogleCommand}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="End">
+                    <Label Margin="0,30,0,0" TextColor="#000000" TextDecorations="Underline">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="У меня уже есть аккаунт ">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding LoginCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Text="▶" Margin="0,30,0,0" TextColor="#000000"/>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

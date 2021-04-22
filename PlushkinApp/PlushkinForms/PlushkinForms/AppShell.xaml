@@ -30,9 +30,9 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Profile" Icon="icon_about.png" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
-        <ShellContent Title="Search" Icon="icon_about.png" Route="SearchPage" ContentTemplate="{DataTemplate local:SearchPage}" />
-        <ShellContent Title="Home" Icon="icon_about.png" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
+        <ShellContent Icon="icon_about.png" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        <ShellContent Icon="icon_about.png" Route="SearchPage" ContentTemplate="{DataTemplate local:SearchPage}" />
+        <ShellContent Icon="icon_about.png" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
 
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
         <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
@@ -44,7 +44,8 @@
     -->
     <TabBar>
         <ShellContent Route="RegisterPage" ContentTemplate="{DataTemplate local:RegisterPage}" />
-        <!--<ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />-->
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+        <ShellContent Route="AuthorizationPage" ContentTemplate="{DataTemplate local:AuthorizationPage}" />
     </TabBar>
 
 
