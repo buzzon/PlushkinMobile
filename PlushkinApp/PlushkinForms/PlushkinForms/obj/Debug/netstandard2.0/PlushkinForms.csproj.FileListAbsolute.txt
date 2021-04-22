@@ -17,3 +17,6 @@ D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstanda
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.dll
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\ref\PlushkinForms.dll
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.pdb
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\HomePage.xaml.g.cs
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\ProfilePage.xaml.g.cs
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\SearchPage.xaml.g.cs
