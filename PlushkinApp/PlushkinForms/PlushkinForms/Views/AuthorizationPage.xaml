@@ -3,10 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlushkinForms.Views.AuthorizationPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout  Padding="10,0,10,0" VerticalOptions="Center">
+            <StackLayout HorizontalOptions="Center" >
+                <Label Text="Plushkin" FontSize="80" FontFamily="{StaticResource RochesterFont}"/>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout HorizontalOptions="Center" >
+                    <Label/>
+                </StackLayout>
+                <StackLayout>
+                    <Entry Placeholder="Почта" />
+                    <Entry Placeholder="Пароль" />
+                    <Label Margin="0,0,0,30" TextColor="#000000" TextDecorations="Underline">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Забыл свой пароль ">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding PasswordRecoveryCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button VerticalOptions="Center" Text="Войти" Command="{Binding LoginCommand}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="◀" Margin="0,30,0,0" TextColor="#000000"/>
+                    <Label Margin="0,30,0,0" TextColor="#000000" TextDecorations="Underline">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Хочу обратно">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ShowRegisterPageCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
