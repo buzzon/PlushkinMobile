@@ -606,3 +606,4 @@ D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms.Android\obj\Debug\1
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms.Android\obj\Debug\110\res\drawable\user.png
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms.Android\obj\Debug\110\res\drawable\user_f.png
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms.Android\obj\Debug\110\res\drawable\video_c.png
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms.Android\obj\Debug\110\android\assets\PropertyChanged.dll

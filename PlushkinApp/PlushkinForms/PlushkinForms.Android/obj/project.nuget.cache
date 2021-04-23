@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "aUFyzyqwLiP59RStndOLlAjT1t2wqALwVCul2nUxB7TGHXfjqwnQDp/ibeA08FFWB2b/A1zwZXz/kHUNx0Cltw==",
+  "dgSpecHash": "HIUKV59nxVQi7Jn6fT2a45b/qTyCCM7ZEcYecb24mrPOlHnFjF/TQEqQrKfS6YyyV1o3FdKlGy41j/V0uZq1Gg==",
   "success": true,
   "projectFilePath": "D:\\projects\\Plushkin\\PlushkinApp\\PlushkinForms\\PlushkinForms.Android\\PlushkinForms.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\buzz0n\\.nuget\\packages\\fody\\6.4.0\\fody.6.4.0.nupkg.sha512",
+    "C:\\Users\\buzz0n\\.nuget\\packages\\propertychanged.fody\\3.3.3\\propertychanged.fody.3.3.3.nupkg.sha512",
     "C:\\Users\\buzz0n\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\buzz0n\\.nuget\\packages\\xamarin.androidx.activity\\1.1.0.5\\xamarin.androidx.activity.1.1.0.5.nupkg.sha512",
     "C:\\Users\\buzz0n\\.nuget\\packages\\xamarin.androidx.annotation\\1.1.0.8\\xamarin.androidx.annotation.1.1.0.8.nupkg.sha512",

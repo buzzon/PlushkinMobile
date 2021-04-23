@@ -25,3 +25,4 @@ D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstanda
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\CollectiblesPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\PasswordRecoveryPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\ChangePassworldPage.xaml.g.cs
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.csproj.Fody.CopyLocal.cache

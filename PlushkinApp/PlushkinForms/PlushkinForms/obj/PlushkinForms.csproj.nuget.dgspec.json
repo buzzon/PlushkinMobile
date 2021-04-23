@@ -50,6 +50,10 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[3.3.3, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"

@@ -10,6 +10,7 @@
       "PlushkinForms/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
+          "PropertyChanged.Fody": "3.3.3",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012"
         },
@@ -17,10 +18,22 @@
           "PlushkinForms.dll": {}
         }
       },
+      "Fody/6.4.0": {},
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "PropertyChanged.Fody/3.3.3": {
+        "dependencies": {
+          "Fody": "6.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PropertyChanged.dll": {
+            "assemblyVersion": "3.3.3.0",
+            "fileVersion": "3.3.3.0"
+          }
         }
       },
       "System.Numerics.Vectors/4.5.0": {
@@ -66,6 +79,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Fody/6.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5cgK5htSklGmBTR8Bj/xvTGrxTINj18QY9S1rAu1G5QX9NAzK9lAB0TugUPdeSGmktW82R3gMj2NNnTgicMwsg==",
+      "path": "fody/6.4.0",
+      "hashPath": "fody.6.4.0.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -79,6 +99,13 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "PropertyChanged.Fody/3.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2dHoq3+Y37J2g06RRyV57zMY9uVOq9JanPienXxineL1pIACCgxn8dL/f6C9I0L1hPvhoipxtP2u9jcSlVsn6Q==",
+      "path": "propertychanged.fody/3.3.3",
+      "hashPath": "propertychanged.fody.3.3.3.nupkg.sha512"
     },
     "System.Numerics.Vectors/4.5.0": {
       "type": "package",
