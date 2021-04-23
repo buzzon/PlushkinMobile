@@ -12,6 +12,7 @@
                     <Label Text="В первый раз?"  />
                 </StackLayout>
                 <StackLayout>
+                    <Label x:Name="LabelErrors" Text=""/>
                     <Entry Placeholder="Как вас зовут?" />
                     <Entry Placeholder="Почта" />
                     <Entry Placeholder="Пароль" />
