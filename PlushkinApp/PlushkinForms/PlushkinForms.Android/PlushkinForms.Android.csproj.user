@@ -4,6 +4,6 @@
     <SelectedDevice>HUAWEI HRY-LX1T</SelectedDevice>
     <ActiveDebugProfile>HUAWEI HRY-LX1T</ActiveDebugProfile>
     <DefaultDevice>pixel_2_q_10_0_-_api_29</DefaultDevice>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>

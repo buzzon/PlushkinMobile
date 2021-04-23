@@ -47,7 +47,7 @@
         <ShellContent Route="RegisterPage" ContentTemplate="{DataTemplate local:RegisterPage}" />
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
         <ShellContent Route="AuthorizationPage" ContentTemplate="{DataTemplate local:AuthorizationPage}" />
+        <ShellContent Route="PasswordRecoveryPage" ContentTemplate="{DataTemplate local:PasswordRecoveryPage}" />
+        <ShellContent Route="ChangePassworldPage" ContentTemplate="{DataTemplate local:ChangePassworldPage}" />
     </TabBar>
-
-
 </Shell>

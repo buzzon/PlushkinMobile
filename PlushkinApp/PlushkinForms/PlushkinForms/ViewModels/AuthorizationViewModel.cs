@@ -9,8 +9,9 @@ namespace PlushkinForms.ViewModels
     class AuthorizationViewModel : BaseViewModel
     {
         public Command PasswordRecoveryCommand { get; }
-        public Command LoginCommand { get; }
         public Command ShowRegisterPageCommand { get; }
+
+        public Command LoginCommand { get; }
 
         public AuthorizationViewModel() 
         {
@@ -21,7 +22,7 @@ namespace PlushkinForms.ViewModels
 
         private async void OnPasswordRecoveryClicked(object obj)
         {
-            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+            await Shell.Current.GoToAsync($"//{nameof(PasswordRecoveryPage)}");
         }
 
         private async void OnShowRegisterPageClicked(object obj)
