@@ -23,7 +23,7 @@
                     <Label Text="В первый раз?"  />
                 </StackLayout>
                 <StackLayout>
-                    <Label Text="{Binding Errors, Converter={StaticResource FirstValidationErrorConverter}}"/>
+                    <Label Text="{Binding Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ErrorTextStyle}"/>
                     <Entry Text="{Binding FirstName.Value}" Placeholder="Как вас зовут?">
                         <Entry.Behaviors>
                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding FirstName.IsValid}"/>

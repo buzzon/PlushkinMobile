@@ -37,13 +37,13 @@ namespace PlushkinForms.ViewModels
 
         private void AddValidationRules() 
         {
-            FirstName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "First Name Required" });
+            FirstName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Требуется ввести Имя" });
 
-            Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email Required" });
-            Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = "Invalid Email" });
+            Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Требуется ввести Email" });
+            Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = "Неверный Email" });
 
-            Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password Required" });
-            Password.Validations.Add(new IsValidPasswordRule<string> { ValidationMessage = "Password between 8-20 characters; must contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character" });
+            Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Требуется ввести пароль" });
+            Password.Validations.Add(new IsValidPasswordRule<string> { ValidationMessage = "Пароль должен содержать не менее одной строчной буквы, одной заглавной буквы, одной цифровой цифры и одного специального символа." });
 
         }
 

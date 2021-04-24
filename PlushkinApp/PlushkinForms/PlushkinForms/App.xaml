@@ -33,6 +33,10 @@
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="16"/>
             </Style>
+            <Style TargetType="Label" x:Key="ErrorTextStyle">
+                <Setter Property="TextColor" Value = "Red"   />
+                <Setter Property="FontSize" Value = "12"   />
+            </Style>
         </ResourceDictionary>        
     </Application.Resources>
 </Application>
