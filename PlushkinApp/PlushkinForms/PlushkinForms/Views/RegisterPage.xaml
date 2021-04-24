@@ -23,15 +23,22 @@
                     <Label Text="В первый раз?"  />
                 </StackLayout>
                 <StackLayout>
-                    <Label Text="{Binding FirstName.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
-                           IsVisible="{Binding FirstName.IsValid, Converter={StaticResource InverseBoolConverter}}"/>
+                    <Label Text="{Binding Errors, Converter={StaticResource FirstValidationErrorConverter}}"/>
                     <Entry Text="{Binding FirstName.Value}" Placeholder="Как вас зовут?">
                         <Entry.Behaviors>
                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding FirstName.IsValid}"/>
                         </Entry.Behaviors>
                     </Entry>
-                    <Entry Placeholder="Почта" />
-                    <Entry Placeholder="Пароль" />
+                    <Entry Text="{Binding Email.Value}" Placeholder="Почта">
+                        <Entry.Behaviors>
+                            <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.IsValid}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry Text="{Binding Password.Value}" Placeholder="Пароль">
+                        <Entry.Behaviors>
+                            <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.IsValid}"/>
+                        </Entry.Behaviors>
+                    </Entry>
                     <Button VerticalOptions="Center" Text="Создать аккаунт" Command="{Binding RegisterCommand}"/>
                     <Button VerticalOptions="Center" Text="Continue with Google" Command="{Binding RegisterGoogleCommand}"/>
                 </StackLayout>
