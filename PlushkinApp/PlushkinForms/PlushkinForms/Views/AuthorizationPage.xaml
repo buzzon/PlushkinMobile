@@ -1,7 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlushkinForms.Views.AuthorizationPage">
+             x:Class="PlushkinForms.Views.AuthorizationPage"
+             xmlns:behaviour="clr-namespace:ValidationsXFSample.Helpers.Behaviours"
+             xmlns:converter="clr-namespace:ValidationsXFSample.Helpers.Converters" 
+             xmlns:viewmodels="clr-namespace:PlushkinForms.ViewModels" 
+             x:DataType="viewmodels:AuthorizationViewModel"
+             Visual="Material">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter"/>
+            <converter:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout  Padding="10,0,10,0" VerticalOptions="Center">
             <StackLayout HorizontalOptions="Center" >
@@ -12,8 +23,17 @@
                     <Label/>
                 </StackLayout>
                 <StackLayout>
-                    <Entry Placeholder="Почта" />
-                    <Entry Placeholder="Пароль" />
+                    <Label Text="{Binding Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ErrorTextStyle}"/>
+                    <Entry Text="{Binding Email.Value}" Placeholder="Почта">
+                        <Entry.Behaviors>
+                            <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.IsValid}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry Text="{Binding Password.Value}" Placeholder="Пароль">
+                        <Entry.Behaviors>
+                            <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.IsValid}"/>
+                        </Entry.Behaviors>
+                    </Entry>
                     <Label Margin="0,0,0,30" TextColor="#000000" TextDecorations="Underline">
                         <Label.FormattedText>
                             <FormattedString>

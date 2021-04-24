@@ -34,6 +34,7 @@ namespace PlushkinForms.ViewModels
         {
             await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         });
+
         public ICommand LoginCommand => new Command(async () =>
         {
             await Shell.Current.GoToAsync($"//{nameof(AuthorizationPage)}");

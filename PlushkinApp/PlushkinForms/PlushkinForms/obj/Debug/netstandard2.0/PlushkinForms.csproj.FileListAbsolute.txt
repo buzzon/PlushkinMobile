@@ -8,7 +8,6 @@ D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstanda
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\ItemsPage.xaml.g.cs
-D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\NewItemPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.AssemblyInfoInputs.cache
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.AssemblyInfo.cs
