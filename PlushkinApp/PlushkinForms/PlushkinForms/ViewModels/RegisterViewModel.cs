@@ -18,21 +18,25 @@ namespace PlushkinForms.ViewModels
         public ValidatableObject<string> Email { get; set; } = new ValidatableObject<string>();
         public ValidatableObject<string> Password { get; set; } = new ValidatableObject<string>();
 
-        public Command RegisterGoogleCommand { get; }
-        public Command LoginCommand { get; }
 
         public RegisterViewModel()
         {
             AddValidationRules();
-
-            RegisterGoogleCommand = new Command(OnRegisterGoogleClicked);
-            LoginCommand = new Command(OnLoginClicked);
         }
 
         public ICommand RegisterCommand => new Command(async () =>
         {
             if (AreFieldsValid())
                 await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+        });
+
+        public ICommand RegisterGoogleCommand => new Command(async () =>
+        {
+            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+        });
+        public ICommand LoginCommand => new Command(async () =>
+        {
+            await Shell.Current.GoToAsync($"//{nameof(AuthorizationPage)}");
         });
 
         private void AddValidationRules() 
@@ -50,6 +54,8 @@ namespace PlushkinForms.ViewModels
         bool AreFieldsValid()
         {
             bool isFirstNameValid = FirstName.Validate();
+
+            Email.Value = Email.Value?.Replace(" ", "");
             bool isEmailValid = Email.Validate();
             bool isPasswordValid = Password.Validate();
 
@@ -64,16 +70,6 @@ namespace PlushkinForms.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsNotValid)));
 
             return isFirstNameValid && isEmailValid && isPasswordValid;
-        }
-
-        private async void OnRegisterGoogleClicked(object obj)
-        {
-            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-        }
-
-        private async void OnLoginClicked(object obj)
-        {
-            await Shell.Current.GoToAsync($"//{nameof(AuthorizationPage)}");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
