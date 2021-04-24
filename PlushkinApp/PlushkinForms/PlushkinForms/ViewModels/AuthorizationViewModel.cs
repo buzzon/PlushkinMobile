@@ -40,10 +40,7 @@ namespace PlushkinForms.ViewModels
 
         private void AddValidationRules()
         {
-            Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Требуется ввести Email" });
             Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = "Неверный Email" });
-
-            Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Требуется ввести пароль" });
             Password.Validations.Add(new IsValidPasswordRule<string> { ValidationMessage = "Неверный пароль" });
         }
 
