@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[3.3.3, )"
             },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"

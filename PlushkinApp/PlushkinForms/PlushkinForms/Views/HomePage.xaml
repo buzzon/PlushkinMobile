@@ -2,11 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlushkinForms.Views.HomePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <StackLayout>
+        <Button Text="Добавить" Command="{Binding CreateBookmarkCommand}" IsEnabled="{Binding IsLoaded}" />
+        <ListView x:Name="bookmarkList" ItemsSource="{Binding Bookmarks}"
+              SelectedItem="{Binding SelectedBookmark, Mode=TwoWay}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label Text="{Binding Type}" FontSize="Medium" />
+                                <Label Text="{Binding Title}" FontSize="Small" />
+                                <Label Text="{Binding Url}" FontSize="Small" />
+                                <Label Text="{Binding Date}" FontSize="Small" />
+                                <Label Text="{Binding User}" FontSize="Small" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout IsVisible="{Binding IsBusy}"
+                    HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="20">
+            <Label Text="Загрузка данных..." TextColor="Gray" HorizontalOptions="Center" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red" >
+            </ActivityIndicator>
         </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>

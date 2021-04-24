@@ -25,3 +25,7 @@ D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstanda
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\PasswordRecoveryPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\Views\ChangePassworldPage.xaml.g.cs
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.csproj.Fody.CopyLocal.cache
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\bin\Debug\netstandard2.0\Mono.Android.dll
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\bin\Debug\netstandard2.0\Mono.Android.pdb
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\bin\Debug\netstandard2.0\Mono.Android.xml
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.csproj.CopyComplete
