@@ -1,4 +1,6 @@
-﻿using PlushkinForms.Views;
+﻿using PlushkinForms.Models;
+using PlushkinForms.Services;
+using PlushkinForms.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +18,24 @@ namespace PlushkinForms.ViewModels
 
         public ValidatableObject<string> Email { get; set; } = new ValidatableObject<string>();
         public ValidatableObject<string> Password { get; set; } = new ValidatableObject<string>();
+
+
+        UserService userService = new UserService();
+        private bool isBusy;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                isBusy = value;
+                OnPropertyChanged("IsBusy");
+                OnPropertyChanged("IsLoaded");
+            }
+        }
+        public bool IsLoaded
+        {
+            get { return !isBusy; }
+        }
 
         public AuthorizationViewModel() 
         {
@@ -35,7 +55,25 @@ namespace PlushkinForms.ViewModels
         public ICommand LoginCommand => new Command(async () =>
         {
             if (AreFieldsValid())
-                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+            {
+                User user = new User
+                {
+                    email = Email.Value,
+                    username = Email.Value,
+                    password = Password.Value
+                };
+
+                IsBusy = true;
+                AuthToken authToken = await userService.GetAuthToken(user);
+                if (authToken != null)
+                {
+                    Application.Current.Properties["authToken"] = authToken.token;
+                    await Application.Current.SavePropertiesAsync();
+
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                }
+                IsBusy = false;
+            }
         });
 
         private void AddValidationRules()
@@ -56,10 +94,15 @@ namespace PlushkinForms.ViewModels
             Errors.AddRange(Email.Errors);
             Errors.AddRange(Password.Errors);
 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Errors)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsNotValid)));
+            OnPropertyChanged("Errors");
+            OnPropertyChanged("IsNotValid");
 
             return isEmailValid && isPasswordValid;
+        }
+
+        protected void OnPropertyChanged(string propName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

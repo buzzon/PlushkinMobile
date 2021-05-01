@@ -48,7 +48,7 @@ namespace PlushkinForms.ViewModels
             AddValidationRules();
         }
 
-        public ICommand RegisterCommand => new Command(async (object userObject) =>
+        public ICommand RegisterCommand => new Command(async () =>
         {
             if (AreFieldsValid())
             {
