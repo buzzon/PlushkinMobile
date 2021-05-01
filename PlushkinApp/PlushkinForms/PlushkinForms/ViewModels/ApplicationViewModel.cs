@@ -95,12 +95,9 @@ namespace PlushkinForms.ViewModels
             IsBusy = true;
             IEnumerable<Bookmark> bookmarks = await bookmarkService.Get();
 
-            // очищаем список
-            //Friends.Clear();
             while (Bookmarks.Any())
                 Bookmarks.RemoveAt(Bookmarks.Count - 1);
 
-            // добавляем загруженные данные
             foreach (Bookmark f in bookmarks)
                 Bookmarks.Add(f);
             IsBusy = false;
