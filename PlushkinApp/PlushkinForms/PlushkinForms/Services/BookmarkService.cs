@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace PlushkinForms.Services
 {
@@ -21,6 +23,13 @@ namespace PlushkinForms.Services
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            if (Application.Current.Properties.ContainsKey("authToken"))
+            {
+                string authToksen = Application.Current.Properties["authToken"].ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", authToksen);
+            }
+            
             return client;
         }
 

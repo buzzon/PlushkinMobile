@@ -31,7 +31,7 @@ namespace PlushkinForms.Services
         //    return JsonSerializer.Deserialize<IEnumerable<Bookmark>>(result, options);
         //}
 
-        public async Task<User> Registration(User user)
+        public async Task<UserErrorMessage> Registration(User user)
         {
             HttpClient client = GetClient();
             var response = await client.PostAsync("http://188.226.96.115:8000/core/user_registration/",
@@ -39,11 +39,26 @@ namespace PlushkinForms.Services
                     JsonSerializer.Serialize(user),
                     Encoding.UTF8, "application/json"));
 
-
-            if (response.StatusCode != HttpStatusCode.Created)
+            if (response.StatusCode == HttpStatusCode.Created)
                 return null;
 
-            return JsonSerializer.Deserialize<User>(
+
+            return JsonSerializer.Deserialize<UserErrorMessage>(
+                await response.Content.ReadAsStringAsync(), options);
+        }
+
+        public async Task<AuthToken> GetAuthToken(User user)
+        {
+            HttpClient client = GetClient();
+            var response = await client.PostAsync("http://188.226.96.115:8000/core/auth_token/",
+                new StringContent(
+                    JsonSerializer.Serialize(user),
+                    Encoding.UTF8, "application/json"));
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                return null;
+
+            return JsonSerializer.Deserialize<AuthToken>(
                 await response.Content.ReadAsStringAsync(), options);
         }
 

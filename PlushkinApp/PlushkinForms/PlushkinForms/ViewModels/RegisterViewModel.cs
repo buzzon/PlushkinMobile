@@ -42,6 +42,9 @@ namespace PlushkinForms.ViewModels
 
         public RegisterViewModel()
         {
+            //if (Application.Current.Resources.ContainsKey("authToken"))
+            //    Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+
             AddValidationRules();
         }
 
@@ -58,19 +61,24 @@ namespace PlushkinForms.ViewModels
 
                 IsBusy = true;
 
-                User addedUser = await userService.Registration(user);
-                if (addedUser != null)
-                {
-                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-                }
-                else
+                UserErrorMessage userError = await userService.Registration(user);
+                if (userError != null)
                 {
                     IsNotValid = true;
 
-                    Errors.Add("Регистрационная хуита");
+                    Errors.Add(userError.username);
 
                     OnPropertyChanged("Errors");
                     OnPropertyChanged("IsNotValid");
+                }
+                else
+                {
+                    AuthToken authToken = await userService.GetAuthToken(user);
+
+                    Application.Current.Properties["authToken"] = authToken.token;
+                    await Application.Current.SavePropertiesAsync();
+
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 }
 
                 IsBusy = false;
