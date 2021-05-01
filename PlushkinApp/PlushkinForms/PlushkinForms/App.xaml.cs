@@ -18,7 +18,8 @@ namespace PlushkinForms
 
         async protected override void OnStart()
         {
-            await Shell.Current.GoToAsync("//RegisterPage");
+            if (!Current.Properties.ContainsKey("authToken"))
+                await Shell.Current.GoToAsync("//RegisterPage");
         }
 
         protected override void OnSleep()
