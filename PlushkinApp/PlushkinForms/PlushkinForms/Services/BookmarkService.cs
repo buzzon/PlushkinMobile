@@ -33,10 +33,22 @@ namespace PlushkinForms.Services
             return client;
         }
 
-        public async Task<IEnumerable<Bookmark>> Get()
+        public class TypeFilter
+        {
+            private TypeFilter(string value) { Value = value; }
+            public string Value { get; set; }
+
+            public static TypeFilter Empty { get { return new TypeFilter(""); } }
+            public static TypeFilter Unsorted { get { return new TypeFilter("?type=U"); } }
+            public static TypeFilter Liked { get { return new TypeFilter("?type=L"); } }
+            public static TypeFilter Trash { get { return new TypeFilter("?type=T"); } }
+
+        }
+
+        public async Task<IEnumerable<Bookmark>> Get(TypeFilter filter)
         {
             HttpClient client = GetClient();
-            string result = await client.GetStringAsync(Url);
+            string result = await client.GetStringAsync(Url + filter.Value);
             return JsonSerializer.Deserialize<IEnumerable<Bookmark>>(result, options);
         }
 

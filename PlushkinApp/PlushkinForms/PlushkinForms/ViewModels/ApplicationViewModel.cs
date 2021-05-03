@@ -7,12 +7,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using PlushkinForms.Models;
 using PlushkinForms.Services;
+using static PlushkinForms.Services.BookmarkService;
 
 namespace PlushkinForms.ViewModels
 {
     class ApplicationViewModel : INotifyPropertyChanged
     {
-        bool initialized = false;   // была ли начальная инициализация
         Bookmark selectedBookmark;
         string selectedMenuItem;
         private bool isBusy;    // идет ли загрузка с сервера
@@ -60,7 +60,25 @@ namespace PlushkinForms.ViewModels
                 {
                     selectedMenuItem = value;
                     OnPropertyChanged("SelectedMenuItem");
-                    //App.Current.MainPage.DisplayAlert(selectedMenuItem, "Test", "OK");
+
+                    switch (selectedMenuItem)
+                    {
+                        case "Недавнее":
+                            new Task(async () => { await GetBookmarks(TypeFilter.Unsorted); }).Start();
+                            break;
+                        case "Все закладки":
+                            new Task(async () => { await GetBookmarks(TypeFilter.Empty); }).Start();
+                            break;
+                        case "Любимое":
+                            new Task(async () => { await GetBookmarks(TypeFilter.Liked); }).Start();
+                            break;
+                        case "Корзина":
+                            new Task(async () => { await GetBookmarks(TypeFilter.Trash); }).Start();
+                            break;
+
+                    }
+
+                    //App.Current.MainPage.DisplayAlert(selectedMenuItem, "Test2", "OK");
                     //Navigation.PushAsync(new BookmarkPage(tempBookmark, this));
                 }
             }
@@ -104,11 +122,10 @@ namespace PlushkinForms.ViewModels
             Navigation.PopAsync();
         }
 
-        public async Task GetBookmarks()
+        public async Task GetBookmarks(TypeFilter filter)
         {
-            if (initialized == true) return;
             IsBusy = true;
-            IEnumerable<Bookmark> bookmarks = await bookmarkService.Get();
+            IEnumerable<Bookmark> bookmarks = await bookmarkService.Get(filter);
 
             while (Bookmarks.Any())
                 Bookmarks.RemoveAt(Bookmarks.Count - 1);
@@ -116,8 +133,10 @@ namespace PlushkinForms.ViewModels
             foreach (Bookmark f in bookmarks)
                 Bookmarks.Add(f);
             IsBusy = false;
-            initialized = true;
+            OnPropertyChanged("SelectedMenuItem");
+            OnPropertyChanged("Bookmarks");
         }
+
         private async void SaveBookmark(object bookmarkObject)
         {
             Bookmark bookmark = bookmarkObject as Bookmark;

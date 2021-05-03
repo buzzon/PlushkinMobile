@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static PlushkinForms.Services.BookmarkService;
 
 namespace PlushkinForms.Views
 {
@@ -22,7 +23,7 @@ namespace PlushkinForms.Views
         }
         protected override async void OnAppearing()
         {
-            await viewModel.GetBookmarks();
+            await viewModel.GetBookmarks(TypeFilter.Empty);
             base.OnAppearing();
         }
     }

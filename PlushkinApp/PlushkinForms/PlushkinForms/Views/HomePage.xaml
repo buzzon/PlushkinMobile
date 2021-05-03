@@ -5,10 +5,10 @@
              x:Class="PlushkinForms.Views.HomePage">
 
     <StackLayout>
-        <input:Dropdown Placeholder="Недавние" Color="Black"
+        <input:Dropdown Color="Black"
                         ItemsSource="{Binding Menu}"
-                        SelectedItem="{Binding SelectedMenuItem}"
-                        PlaceholderColor="#000000" Margin="0,0,200,0"/>
+                        SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                        PlaceholderColor="#000000"/>
         <ListView ItemsSource="{Binding Bookmarks}"
               SelectedItem="{Binding SelectedBookmark, Mode=TwoWay}" HasUnevenRows="True">
             <ListView.ItemTemplate>
