@@ -17,7 +17,7 @@ namespace PlushkinForms.Views
         public HomePage()
         {
             InitializeComponent();
-            viewModel = new ApplicationViewModel() { Navigation = this.Navigation };
+            viewModel = new ApplicationViewModel() { Navigation = this.Navigation }; 
             BindingContext = viewModel;
         }
         protected override async void OnAppearing()

@@ -5,6 +5,7 @@ public class MonoPackageManager_Resources {
 		"PlushkinForms.Android.dll",
 		"FormsViewGroup.dll",
 		"Microsoft.Bcl.AsyncInterfaces.dll",
+		"Plugin.InputKit.dll",
 		"PlushkinForms.dll",
 		"PropertyChanged.dll",
 		"System.Text.Encodings.Web.dll",

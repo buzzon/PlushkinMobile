@@ -13,8 +13,10 @@ namespace PlushkinForms.ViewModels
     class ApplicationViewModel : INotifyPropertyChanged
     {
         bool initialized = false;   // была ли начальная инициализация
-        Bookmark selectedBookmark;  // выбранный друг
+        Bookmark selectedBookmark;
+        string selectedMenuItem;
         private bool isBusy;    // идет ли загрузка с сервера
+        public List<string> Menu { get; set; }
 
         public ObservableCollection<Bookmark> Bookmarks { get; set; }
         BookmarkService bookmarkService = new BookmarkService();
@@ -24,7 +26,6 @@ namespace PlushkinForms.ViewModels
         public ICommand DeleteBookmarkCommand { protected set; get; }
         public ICommand SaveBookmarkCommand { protected set; get; }
         public ICommand BackCommand { protected set; get; }
-
         public INavigation Navigation { get; set; }
 
         public bool IsBusy
@@ -37,19 +38,32 @@ namespace PlushkinForms.ViewModels
                 OnPropertyChanged("IsLoaded");
             }
         }
-        public bool IsLoaded
-        {
-            get { return !isBusy; }
-        }
 
         public ApplicationViewModel()
         {
+            Menu = new List<string> { "Недавнее", "Все закладки", "Любимое", "Корзина" };
+            SelectedMenuItem = Menu[0];
             Bookmarks = new ObservableCollection<Bookmark>();
             IsBusy = false;
             CreateBookmarkCommand = new Command(CreateBookmark);
             DeleteBookmarkCommand = new Command(DeleteBookmark);
             SaveBookmarkCommand = new Command(SaveBookmark);
             BackCommand = new Command(Back);
+        }
+
+        public string SelectedMenuItem
+        {
+            get { return selectedMenuItem; }
+            set
+            {
+                if (selectedMenuItem != value)
+                {
+                    selectedMenuItem = value;
+                    OnPropertyChanged("SelectedMenuItem");
+                    //App.Current.MainPage.DisplayAlert(selectedMenuItem, "Test", "OK");
+                    //Navigation.PushAsync(new BookmarkPage(tempBookmark, this));
+                }
+            }
         }
 
         public Bookmark SelectedBookmark
@@ -74,6 +88,7 @@ namespace PlushkinForms.ViewModels
                 }
             }
         }
+
         protected void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

@@ -28,6 +28,7 @@
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
+    
 
     <TabBar>
         <ShellContent Icon="user.png" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />

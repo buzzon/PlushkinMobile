@@ -14,6 +14,7 @@
           "System.Text.Json": "5.0.2",
           "Xamarin.Essentials": "1.6.1",
           "Xamarin.Forms": "5.0.0.2012",
+          "Xamarin.Forms.InputKit": "3.7.2",
           "Mono.Android": "0.0.0.0"
         },
         "runtime": {
@@ -153,6 +154,14 @@
           }
         }
       },
+      "Xamarin.Forms.InputKit/3.7.2": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.InputKit.dll": {
+            "assemblyVersion": "3.7.2.0",
+            "fileVersion": "3.7.2.0"
+          }
+        }
+      },
       "Mono.Android/0.0.0.0": {
         "runtime": {
           "Mono.Android.dll": {
@@ -266,6 +275,13 @@
       "sha512": "sha512-Rqc6xvWR/sf+Db5+qRCFmuYTWVp04QWRfwPto2/JHbShSy4Ed53Q2jpoFzsoloXkJA6saD236PlaWAhT6vI4gw==",
       "path": "xamarin.forms/5.0.0.2012",
       "hashPath": "xamarin.forms.5.0.0.2012.nupkg.sha512"
+    },
+    "Xamarin.Forms.InputKit/3.7.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RVjq8yqh/+MQ/pSLBHEfVqeqOtjJV9H3htHM0U3K0omD/RNeHJZLKDQAgDAgzQan6m5DBkrGoIqOtacTNRGueg==",
+      "path": "xamarin.forms.inputkit/3.7.2",
+      "hashPath": "xamarin.forms.inputkit.3.7.2.nupkg.sha512"
     },
     "Mono.Android/0.0.0.0": {
       "type": "reference",
