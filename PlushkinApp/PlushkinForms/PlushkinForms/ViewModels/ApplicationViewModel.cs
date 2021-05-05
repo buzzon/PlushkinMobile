@@ -22,10 +22,7 @@ namespace PlushkinForms.ViewModels
         BookmarkService bookmarkService = new BookmarkService();
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ICommand CreateBookmarkCommand { protected set; get; }
         public ICommand DeleteBookmarkCommand { protected set; get; }
-        public ICommand SaveBookmarkCommand { protected set; get; }
-        public ICommand BackCommand { protected set; get; }
         public INavigation Navigation { get; set; }
 
         public bool IsBusy
@@ -39,17 +36,16 @@ namespace PlushkinForms.ViewModels
             }
         }
 
+
         public ApplicationViewModel()
         {
             Menu = new List<string> { "Недавнее", "Все закладки", "Любимое", "Корзина" };
             SelectedMenuItem = Menu[0];
             Bookmarks = new ObservableCollection<Bookmark>();
             IsBusy = false;
-            CreateBookmarkCommand = new Command(CreateBookmark);
             DeleteBookmarkCommand = new Command(DeleteBookmark);
-            SaveBookmarkCommand = new Command(SaveBookmark);
-            BackCommand = new Command(Back);
         }
+
 
         public string SelectedMenuItem
         {
@@ -93,12 +89,12 @@ namespace PlushkinForms.ViewModels
                 {
                     Bookmark tempBookmark = new Bookmark()
                     {
-                        Id = value.Id,
-                        Type = value.Type,
-                        Title = value.Title,
-                        Url = value.Url,
-                        Date = value.Date,
-                        User = value.User
+                        id = value.id,
+                        type = value.type,
+                        title = value.title,
+                        url = value.url,
+                        date = value.date,
+                        user = value.user
                     };
                     selectedBookmark = null;
                     OnPropertyChanged("SelectedBookmark");
@@ -111,15 +107,6 @@ namespace PlushkinForms.ViewModels
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
-
-        private async void CreateBookmark()
-        {
-            //await Navigation.PushAsync(new BookmarkPage(new Bookmark(), this));
-        }
-        private void Back()
-        {
-            Navigation.PopAsync();
         }
 
         public async Task GetBookmarks(TypeFilter filter)
@@ -137,49 +124,23 @@ namespace PlushkinForms.ViewModels
             OnPropertyChanged("Bookmarks");
         }
 
-        private async void SaveBookmark(object bookmarkObject)
+        public async void SaveBookmark(object bookmarkObject)
         {
-            Bookmark bookmark = bookmarkObject as Bookmark;
-            if (bookmark != null)
-            {
-                IsBusy = true;
-                // редактирование
-                if (bookmark.Id > 0)
-                {
-                    Bookmark updatedBookmark = await bookmarkService.Update(bookmark);
-                    // заменяем объект в списке на новый
-                    if (updatedBookmark != null)
-                    {
-                        int pos = Bookmarks.IndexOf(updatedBookmark);
-                        Bookmarks.RemoveAt(pos);
-                        Bookmarks.Insert(pos, updatedBookmark);
-                    }
-                }
-                // добавление
-                else
-                {
-                    Bookmark addedBookmark = await bookmarkService.Add(bookmark);
-                    if (addedBookmark != null)
-                        Bookmarks.Add(addedBookmark);
-                }
-                IsBusy = false;
-            }
-            Back();
+            if (bookmarkObject is Bookmark bookmark)
+                await bookmarkService.Add(bookmark);
         }
         private async void DeleteBookmark(object bookmarkObject)
         {
-            Bookmark bookmark = bookmarkObject as Bookmark;
-            if (bookmark != null)
+            if (bookmarkObject is Bookmark bookmark)
             {
                 IsBusy = true;
-                Bookmark deletedBookmark = await bookmarkService.Delete(bookmark.Id);
+                Bookmark deletedBookmark = await bookmarkService.Delete(bookmark.id);
                 if (deletedBookmark != null)
                 {
                     Bookmarks.Remove(deletedBookmark);
                 }
                 IsBusy = false;
             }
-            Back();
         }
     }
 }

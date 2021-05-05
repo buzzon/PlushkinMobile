@@ -1,4 +1,5 @@
-﻿using PlushkinForms.ViewModels;
+﻿using PlushkinForms.Models;
+using PlushkinForms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,13 @@ namespace PlushkinForms.Views
         {
             await viewModel.GetBookmarks(TypeFilter.Empty);
             base.OnAppearing();
+
+
+            MessagingCenter.Subscribe<object, string[]>(this, "AddItem", (sender, arg) =>
+            {
+                viewModel.SaveBookmark(new Bookmark() { type = "U", title = arg[0], url = arg[1] });
+                MessagingCenter.Unsubscribe<object, string[]>(this, "AddItem");
+            });
         }
     }
 }

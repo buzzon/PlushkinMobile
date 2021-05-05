@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             x:Class="PlushkinForms.Views.HomePage">
+             xmlns:Models="clr-namespace:PlushkinForms.Models"
+             x:Class="PlushkinForms.Views.HomePage"
+             Visual="Material">
 
     <StackLayout>
         <input:Dropdown Color="Black"
@@ -14,15 +16,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout>
-                                <Label Text="{Binding Type}" FontSize="Medium" />
-                                <Label Text="{Binding Title}" FontSize="Small" />
-                                <Label Text="{Binding Url}" FontSize="Small" />
-                                <Label Text="{Binding Date}" FontSize="Small" />
-                                <Label Text="{Binding User}" FontSize="Small" />
+                        <StackLayout>
+                                <Label Text="{Binding type}" FontSize="Medium" />
+                                <Label Text="{Binding title}" FontSize="Small" />
+                                <Label Text="{Binding url}" FontSize="Small" />
+                                <Label Text="{Binding date}" FontSize="Small" />
+                                <Label Text="{Binding user}" FontSize="Small" />
                             </StackLayout>
-                        </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -30,8 +30,7 @@
         <StackLayout IsVisible="{Binding IsBusy}"
                     HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="20">
             <Label Text="Загрузка данных..." TextColor="Gray" HorizontalOptions="Center" />
-            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red" >
-            </ActivityIndicator>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red" />
         </StackLayout>
     </StackLayout>
 </ContentPage>

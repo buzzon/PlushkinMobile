@@ -60,6 +60,8 @@ namespace PlushkinForms.Services
                     JsonSerializer.Serialize(bookmark),
                     Encoding.UTF8, "application/json"));
 
+            var ss = response.Content.ReadAsStringAsync().Result;
+
             if (response.StatusCode != HttpStatusCode.OK)
                 return null;
 

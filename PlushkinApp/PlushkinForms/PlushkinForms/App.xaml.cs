@@ -1,4 +1,5 @@
-﻿using PlushkinForms.Services;
+﻿using PlushkinForms.Models;
+using PlushkinForms.Services;
 using PlushkinForms.Views;
 using System;
 using Xamarin.Forms;

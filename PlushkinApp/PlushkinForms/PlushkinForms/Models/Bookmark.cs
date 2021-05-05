@@ -6,28 +6,28 @@ namespace PlushkinForms.Models
 {
     class Bookmark
     {
-        public int Id { get; set; }
-        public string Type { get; set; }
-        public string Title { get; set; }
-        public string Url { get; set; }
-        public DateTime Date { get; set; }
-        public int User { get; set; }
+        public int id { get; set; }
+        public string type { get; set; }
+        public string title { get; set; }
+        public string url { get; set; }
+        public DateTime date { get; set; }
+        public int user { get; set; }
 
         public override bool Equals(object obj)
         {
             Bookmark friend = obj as Bookmark;
-            return Id == friend.Id;
+            return id == friend.id;
         }
 
         public override int GetHashCode()
         {
             int hashCode = -778921025;
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Type);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Title);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Url);
-            hashCode = hashCode * -1521134295 + Date.GetHashCode();
-            hashCode = hashCode * -1521134295 + User.GetHashCode();
+            hashCode = hashCode * -1521134295 + id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(type);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(title);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(url);
+            hashCode = hashCode * -1521134295 + date.GetHashCode();
+            hashCode = hashCode * -1521134295 + user.GetHashCode();
             return hashCode;
         }
     }
