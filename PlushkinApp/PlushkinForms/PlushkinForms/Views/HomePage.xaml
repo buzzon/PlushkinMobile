@@ -4,6 +4,7 @@
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:Models="clr-namespace:PlushkinForms.Models"
              x:Class="PlushkinForms.Views.HomePage"
+             x:Name="MyPage"
              Visual="Material">
 
     <StackLayout>
@@ -17,12 +18,13 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                                <Label Text="{Binding type}" FontSize="Medium" />
-                                <Label Text="{Binding title}" FontSize="Small" />
-                                <Label Text="{Binding url}" FontSize="Small" />
-                                <Label Text="{Binding date}" FontSize="Small" />
-                                <Label Text="{Binding user}" FontSize="Small" />
-                            </StackLayout>
+                            <Label Text="{Binding type}" FontSize="Small" />
+                            <Label Text="{Binding title}" FontSize="Medium" />
+                            <Label Text="{Binding date}" FontSize="Small" />
+                            <Label Text="{Binding url}" FontSize="Small" />
+                            <Label Text="{Binding user}" FontSize="Small" />
+                            <Button Text="Удалить" Command="{Binding Source={x:Reference MyPage}, Path=BindingContext.DeleteBookmarkCommand}" CommandParameter="{Binding .}"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

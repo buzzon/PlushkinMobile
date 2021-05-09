@@ -60,7 +60,7 @@ namespace PlushkinForms.Services
                     JsonSerializer.Serialize(bookmark),
                     Encoding.UTF8, "application/json"));
 
-            var ss = response.Content.ReadAsStringAsync().Result;
+            //var ss = response.Content.ReadAsStringAsync().Result;
 
             if (response.StatusCode != HttpStatusCode.OK)
                 return null;
@@ -87,12 +87,8 @@ namespace PlushkinForms.Services
         public async Task<Bookmark> Delete(int id)
         {
             HttpClient client = GetClient();
-            var response = await client.DeleteAsync(Url + id);
-            if (response.StatusCode != HttpStatusCode.OK)
-                return null;
-
-            return JsonSerializer.Deserialize<Bookmark>(
-               await response.Content.ReadAsStringAsync(), options);
+            await client.DeleteAsync(Url + id);
+            return null;
         }
     }
 }

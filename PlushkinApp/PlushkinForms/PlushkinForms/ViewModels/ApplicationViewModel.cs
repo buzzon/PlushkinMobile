@@ -22,7 +22,7 @@ namespace PlushkinForms.ViewModels
         BookmarkService bookmarkService = new BookmarkService();
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ICommand DeleteBookmarkCommand { protected set; get; }
+
         public INavigation Navigation { get; set; }
 
         public bool IsBusy
@@ -43,7 +43,6 @@ namespace PlushkinForms.ViewModels
             SelectedMenuItem = Menu[0];
             Bookmarks = new ObservableCollection<Bookmark>();
             IsBusy = false;
-            DeleteBookmarkCommand = new Command(DeleteBookmark);
         }
 
 
@@ -129,18 +128,21 @@ namespace PlushkinForms.ViewModels
             if (bookmarkObject is Bookmark bookmark)
                 await bookmarkService.Add(bookmark);
         }
-        private async void DeleteBookmark(object bookmarkObject)
+
+        public ICommand DeleteBookmarkCommand => new Command(async (object bookmarkObject) => 
         {
             if (bookmarkObject is Bookmark bookmark)
             {
                 IsBusy = true;
                 Bookmark deletedBookmark = await bookmarkService.Delete(bookmark.id);
-                if (deletedBookmark != null)
-                {
-                    Bookmarks.Remove(deletedBookmark);
-                }
+                Bookmarks.Remove(bookmark);
                 IsBusy = false;
             }
-        }
+        });
+
+        public ICommand RegisterCommand => new Command(async () =>
+        {
+            var ss = "ss";
+        });
     }
 }

@@ -28,3 +28,4 @@ D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\bin\Debug\netstanda
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\bin\Debug\netstandard2.0\Mono.Android.pdb
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\bin\Debug\netstandard2.0\Mono.Android.xml
 D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.csproj.CopyComplete
+D:\projects\Plushkin\PlushkinApp\PlushkinForms\PlushkinForms\obj\Debug\netstandard2.0\PlushkinForms.csprojAssemblyReference.cache
