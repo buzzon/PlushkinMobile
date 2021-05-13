@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using PlushkinForms.Models;
 using PlushkinForms.Services;
 using static PlushkinForms.Services.BookmarkService;
+using Xamarin.Essentials;
 
 namespace PlushkinForms.ViewModels
 {
@@ -137,6 +138,14 @@ namespace PlushkinForms.ViewModels
                 Bookmark deletedBookmark = await bookmarkService.Delete(bookmark.id);
                 Bookmarks.Remove(bookmark);
                 IsBusy = false;
+            }
+        });
+
+        public ICommand OpenUrlkCommand => new Command(async (object urlObject) =>
+        {
+            if (urlObject is string url)
+            {
+                await Browser.OpenAsync(url, BrowserLaunchMode.SystemPreferred);
             }
         });
 
