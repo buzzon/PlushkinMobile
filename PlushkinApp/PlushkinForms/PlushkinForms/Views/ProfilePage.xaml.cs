@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlushkinForms.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,19 @@ namespace PlushkinForms.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        ProfileViewModel viewModel;
+
         public ProfilePage()
         {
             InitializeComponent();
+            viewModel = new ProfileViewModel();
+            BindingContext = viewModel;
+        }
+
+        protected override async void OnAppearing()
+        {
+            await viewModel.GetUser();
+            base.OnAppearing();
         }
     }
 }

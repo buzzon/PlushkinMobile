@@ -9,6 +9,8 @@ namespace PlushkinForms.Models
         public int id { get; set; }
         public string type { get; set; }
         public string title { get; set; }
+
+        public string siteName { get; set; }
         public string url { get; set; }
         public DateTime date { get; set; }
         public int user { get; set; }

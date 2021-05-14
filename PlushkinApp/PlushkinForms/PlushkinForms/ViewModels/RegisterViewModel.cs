@@ -56,6 +56,7 @@ namespace PlushkinForms.ViewModels
                 {
                     email = Email.Value,
                     username = Email.Value,
+                    first_name = FirstName.Value,
                     password = Password.Value
                 };
 

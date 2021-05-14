@@ -3,7 +3,9 @@ using PlushkinForms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -30,7 +32,13 @@ namespace PlushkinForms.Views
 
             MessagingCenter.Subscribe<object, string[]>(this, "AddItem", (sender, arg) =>
             {
-                viewModel.SaveBookmark(new Bookmark() { type = "U", title = arg[0], url = arg[1] });
+                string url = arg[1];
+
+                WebClient x = new WebClient();
+                string source = x.DownloadString(arg[1]);
+                string siteName = Regex.Match(url, @"^([^/]*/){2}([^/]*)").Groups[2].ToString();
+                string siteTitle = Regex.Match(source, @"\<title\b[^>]*\>\s*(?<Title>[\s\S]*?)\</title\>", RegexOptions.IgnoreCase).Groups["Title"].Value;
+                viewModel.SaveBookmark(new Bookmark() { type = "U", title = siteTitle, siteName = siteName, url = arg[1] });
                 MessagingCenter.Unsubscribe<object, string[]>(this, "AddItem");
             });
         }

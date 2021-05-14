@@ -1,12 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlushkinForms.Views.ProfilePage">
+             x:Class="PlushkinForms.Views.ProfilePage"
+             xmlns:viewmodels="clr-namespace:PlushkinForms.ViewModels" 
+             x:DataType="viewmodels:ProfileViewModel"
+             Visual="Material">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Профиль"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout  Padding="10,0,10,0">
+            <Label Text="Профиль"/>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="user.png"></Image>
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="{Binding User.first_name}" FontSize="Large"></Label>
+                    <Label Text="{Binding User.email}" FontSize="Medium"/>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="Изменить имя" FontSize="Medium"></Label>
+            <Entry Placeholder="Введите новое имя"></Entry>
+            <Label Text="Изменить почту" FontSize="Medium"></Label>
+            <Entry Placeholder="Введите новую почту"></Entry>
+            <Label Text="Выйти" FontAttributes="Bold" FontSize="Medium"></Label>
+            <Button Text="Удалить аккаунт" HorizontalOptions="Start"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

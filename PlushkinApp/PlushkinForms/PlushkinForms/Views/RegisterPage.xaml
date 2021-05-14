@@ -34,7 +34,7 @@
                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.IsValid}"/>
                         </Entry.Behaviors>
                     </Entry>
-                    <Entry Text="{Binding Password.Value}" Placeholder="Пароль">
+                    <Entry Text="{Binding Password.Value}" Placeholder="Пароль" IsPassword="True">
                         <Entry.Behaviors>
                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.IsValid}"/>
                         </Entry.Behaviors>

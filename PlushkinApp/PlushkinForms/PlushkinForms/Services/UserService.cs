@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace PlushkinForms.Services
 {
@@ -20,7 +22,15 @@ namespace PlushkinForms.Services
         private HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
+            
             client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            if (Application.Current.Properties.ContainsKey("authToken"))
+            {
+                string authToksen = Application.Current.Properties["authToken"].ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", authToksen);
+            }
+
             return client;
         }
 
@@ -60,6 +70,15 @@ namespace PlushkinForms.Services
 
             return JsonSerializer.Deserialize<AuthToken>(
                 await response.Content.ReadAsStringAsync(), options);
+        }
+
+        public async Task<User> GetUser()
+        {
+            HttpClient client = GetClient();
+
+            var response = await client.GetStringAsync("http://188.226.96.115:8000/core/user/");
+
+            return JsonSerializer.Deserialize<User>(response, options);
         }
 
         //public async Task<Bookmark> Update(Bookmark bookmark)
