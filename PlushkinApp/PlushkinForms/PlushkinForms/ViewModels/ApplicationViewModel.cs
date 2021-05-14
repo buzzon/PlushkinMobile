@@ -164,13 +164,14 @@ namespace PlushkinForms.ViewModels
                 bookmark.type = "L";
                 Bookmark updatedBookmark = await bookmarkService.Update(bookmark);
 
-                IEnumerable<Bookmark> bookmarks = await bookmarkService.Get(TypeFilter.Empty);
+                var bm = Bookmarks.First(i => i.id == bookmark.id);
 
-                while (Bookmarks.Any())
-                    Bookmarks.RemoveAt(Bookmarks.Count - 1);
+                if (bm.type == "L")
+                    bookmark.type = "U";
+                else
+                    bookmark.type = "L";
 
-                foreach (Bookmark f in bookmarks)
-                    Bookmarks.Add(f);
+                Bookmarks.Remove(bm);
 
                 OnPropertyChanged("Bookmarks");
             }
@@ -183,14 +184,14 @@ namespace PlushkinForms.ViewModels
                 bookmark.type = "T";
                 Bookmark updatedBookmark = await bookmarkService.Update(bookmark);
 
+                var bm = Bookmarks.First(i => i.id == bookmark.id);
 
-                IEnumerable<Bookmark> bookmarks = await bookmarkService.Get(TypeFilter.Empty);
+                if (bm.type == "T")
+                    bookmark.type = "U";
+                else
+                    bookmark.type = "T";
 
-                while (Bookmarks.Any())
-                    Bookmarks.RemoveAt(Bookmarks.Count - 1);
-
-                foreach (Bookmark f in bookmarks)
-                    Bookmarks.Add(f);
+                Bookmarks.Remove(bm);
 
                 OnPropertyChanged("Bookmarks");
             }
