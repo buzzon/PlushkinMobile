@@ -19,13 +19,15 @@ namespace PlushkinForms.Services
             PropertyNameCaseInsensitive = true,
         };
 
+        private bool IsAuth = false;
+
         private HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
             
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-            if (Application.Current.Properties.ContainsKey("authToken"))
+            IsAuth = Application.Current.Properties.ContainsKey("authToken");
+            if (IsAuth)
             {
                 string authToksen = Application.Current.Properties["authToken"].ToString();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", authToksen);
@@ -57,6 +59,33 @@ namespace PlushkinForms.Services
                 await response.Content.ReadAsStringAsync(), options);
         }
 
+        public async Task<User> Update(User user)
+        {
+            HttpClient client = GetClient();
+            if (!IsAuth) return null;
+            var response = await client.PostAsync("http://188.226.96.115:8000/core/user_update/",
+                new StringContent(
+                    JsonSerializer.Serialize(user),
+                    Encoding.UTF8, "application/json"));
+
+            if (response.StatusCode == HttpStatusCode.Created)
+                return null;
+
+
+            return JsonSerializer.Deserialize<User>(
+                await response.Content.ReadAsStringAsync(), options);
+        }
+
+        public async Task<User> Delete()
+        {
+            HttpClient client = GetClient();
+            if (!IsAuth) return null;
+            var response = await client.PostAsync("http://188.226.96.115:8000/core/user_remove/", new StringContent(""));
+
+            return JsonSerializer.Deserialize<User>(
+                await response.Content.ReadAsStringAsync(), options);
+        }
+
         public async Task<AuthToken> GetAuthToken(User user)
         {
             HttpClient client = GetClient();
@@ -75,7 +104,7 @@ namespace PlushkinForms.Services
         public async Task<User> GetUser()
         {
             HttpClient client = GetClient();
-
+            if (!IsAuth) return null;
             var response = await client.GetStringAsync("http://188.226.96.115:8000/core/user/");
 
             return JsonSerializer.Deserialize<User>(response, options);

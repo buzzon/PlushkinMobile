@@ -19,12 +19,14 @@ namespace PlushkinForms.Services
             PropertyNameCaseInsensitive = true,
         };
 
+        private bool IsAuth = false;
+
         private HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-            if (Application.Current.Properties.ContainsKey("authToken"))
+            IsAuth = Application.Current.Properties.ContainsKey("authToken");
+            if (IsAuth)
             {
                 string authToksen = Application.Current.Properties["authToken"].ToString();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", authToksen);
@@ -48,13 +50,23 @@ namespace PlushkinForms.Services
         public async Task<IEnumerable<Bookmark>> Get(TypeFilter filter)
         {
             HttpClient client = GetClient();
+            if (!IsAuth) return new List<Bookmark>();
             string result = await client.GetStringAsync(Url + filter.Value);
+            return JsonSerializer.Deserialize<IEnumerable<Bookmark>>(result, options);
+        }
+
+        public async Task<IEnumerable<Bookmark>> Search(string filter)
+        {
+            HttpClient client = GetClient();
+            if (!IsAuth) return new List<Bookmark>();
+            string result = await client.GetStringAsync(Url + "?search=" + filter);
             return JsonSerializer.Deserialize<IEnumerable<Bookmark>>(result, options);
         }
 
         public async Task<Bookmark> Add(Bookmark bookmark)
         {
-            HttpClient client = GetClient();
+            HttpClient client = GetClient(); 
+            if (!IsAuth) return null;
             var response = await client.PostAsync(Url,
                 new StringContent(
                     JsonSerializer.Serialize(bookmark),
@@ -72,6 +84,7 @@ namespace PlushkinForms.Services
         public async Task<Bookmark> Update(Bookmark bookmark)
         {
             HttpClient client = GetClient();
+            if (!IsAuth) return null;
             var response = await client.PutAsync(Url,
                 new StringContent(
                     JsonSerializer.Serialize(bookmark),
@@ -87,6 +100,7 @@ namespace PlushkinForms.Services
         public async Task<Bookmark> Delete(int id)
         {
             HttpClient client = GetClient();
+            if (!IsAuth) return null;
             await client.DeleteAsync(Url + id);
             return null;
         }

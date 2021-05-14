@@ -27,5 +27,21 @@ namespace PlushkinForms.Views
             await viewModel.GetUser();
             base.OnAppearing();
         }
+
+        private void EntryName_Completed(object sender, EventArgs e)
+        {
+            viewModel.ChangeName(((Entry)sender).Text);
+        }
+
+        private void EntryEmail_Completed(object sender, EventArgs e)
+        {
+            viewModel.ChangeEmail(((Entry)sender).Text);
+        }
+
+        private async void OnButtonClicked(object sender, System.EventArgs e)
+        {
+            bool result = await DisplayAlert("Подтвердить действие", "Вы точно хотите удалить свою учётную запись?", "Да, хочу удалить", "Я передумал");
+            viewModel.DeleteUser();
+        }
     }
 }

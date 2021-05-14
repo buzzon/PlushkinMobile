@@ -1,12 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlushkinForms.Views.SearchPage">
+             x:Class="PlushkinForms.Views.SearchPage"
+             x:Name="MyPage"
+             Visual="Material">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Поиск"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry Placeholder="Поиск по названию и url" Completed="EntrySearch_Completed" ></Entry>
+            <ListView ItemsSource="{Binding Bookmarks}"
+              SelectedItem="{Binding SelectedBookmark, Mode=TwoWay}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding siteName, StringFormat='https://www.google.com/s2/favicons?domain={0}'}" Scale="4" Margin="15,0"></Image>
+                                    <Label Text="{Binding siteName}" FontSize="Medium"/>
+                                    <Label Text="{Binding date}" FontSize="Small" VerticalOptions="Center" />
+                                </StackLayout>
+                                <Label Text="{Binding title}" FontSize="Medium" />
+                                <Button Text="Удалить" Command="{Binding Source={x:Reference MyPage}, Path=BindingContext.DeleteBookmarkCommand}" CommandParameter="{Binding .}"/>
+                                <Button Text="Открыть" Command="{Binding Source={x:Reference MyPage}, Path=BindingContext.OpenUrlkCommand}" CommandParameter="{Binding url}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

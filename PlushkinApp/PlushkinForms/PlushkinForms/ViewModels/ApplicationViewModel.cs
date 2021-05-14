@@ -124,6 +124,21 @@ namespace PlushkinForms.ViewModels
             OnPropertyChanged("Bookmarks");
         }
 
+        public async Task BookmarksSearch(string filter)
+        {
+            IsBusy = true;
+            IEnumerable<Bookmark> bookmarks = await bookmarkService.Search(filter);
+
+            while (Bookmarks.Any())
+                Bookmarks.RemoveAt(Bookmarks.Count - 1);
+
+            foreach (Bookmark f in bookmarks)
+                Bookmarks.Add(f);
+            IsBusy = false;
+            OnPropertyChanged("SelectedMenuItem");
+            OnPropertyChanged("Bookmarks");
+        }
+
         public async void SaveBookmark(object bookmarkObject)
         {
             if (bookmarkObject is Bookmark bookmark)
