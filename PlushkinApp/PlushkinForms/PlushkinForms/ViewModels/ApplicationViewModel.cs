@@ -145,14 +145,54 @@ namespace PlushkinForms.ViewModels
                 await bookmarkService.Add(bookmark);
         }
 
-        public ICommand DeleteBookmarkCommand => new Command(async (object bookmarkObject) => 
+        public ICommand ShareBookmarkCommand => new Command(async (object bookmarkObject) => 
         {
             if (bookmarkObject is Bookmark bookmark)
             {
-                IsBusy = true;
-                Bookmark deletedBookmark = await bookmarkService.Delete(bookmark.id);
-                Bookmarks.Remove(bookmark);
-                IsBusy = false;
+                await Share.RequestAsync(new ShareTextRequest
+                {
+                    Uri = bookmark.url,
+                    Title = "Share " + bookmark.title
+                });
+            }
+        });
+
+        public ICommand LikeBookmarkCommand => new Command(async (object bookmarkObject) =>
+        {
+            if (bookmarkObject is Bookmark bookmark)
+            {
+                bookmark.type = "L";
+                Bookmark updatedBookmark = await bookmarkService.Update(bookmark);
+
+                IEnumerable<Bookmark> bookmarks = await bookmarkService.Get(TypeFilter.Empty);
+
+                while (Bookmarks.Any())
+                    Bookmarks.RemoveAt(Bookmarks.Count - 1);
+
+                foreach (Bookmark f in bookmarks)
+                    Bookmarks.Add(f);
+
+                OnPropertyChanged("Bookmarks");
+            }
+        });
+
+        public ICommand DeleteBookmarkCommand => new Command(async (object bookmarkObject) =>
+        {
+            if (bookmarkObject is Bookmark bookmark)
+            {
+                bookmark.type = "T";
+                Bookmark updatedBookmark = await bookmarkService.Update(bookmark);
+
+
+                IEnumerable<Bookmark> bookmarks = await bookmarkService.Get(TypeFilter.Empty);
+
+                while (Bookmarks.Any())
+                    Bookmarks.RemoveAt(Bookmarks.Count - 1);
+
+                foreach (Bookmark f in bookmarks)
+                    Bookmarks.Add(f);
+
+                OnPropertyChanged("Bookmarks");
             }
         });
 

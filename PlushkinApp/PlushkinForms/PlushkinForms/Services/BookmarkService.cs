@@ -85,7 +85,7 @@ namespace PlushkinForms.Services
         {
             HttpClient client = GetClient();
             if (!IsAuth) return null;
-            var response = await client.PutAsync(Url,
+            var response = await client.PostAsync("http://188.226.96.115:8000/core/bookmark_update/",
                 new StringContent(
                     JsonSerializer.Serialize(bookmark),
                     Encoding.UTF8, "application/json"));

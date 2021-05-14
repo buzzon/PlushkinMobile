@@ -97,6 +97,8 @@ namespace PlushkinForms.Services
             if (response.StatusCode != HttpStatusCode.OK)
                 return null;
 
+            var ss = response.Content.ReadAsStringAsync().Result;
+
             return JsonSerializer.Deserialize<AuthToken>(
                 await response.Content.ReadAsStringAsync(), options);
         }
